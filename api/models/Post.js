@@ -12,7 +12,6 @@ module.exports = class Post {
             const data = await db.query('SELECT * FROM post WHERE id = $1;', [id]);
             const post = new Post(data.rows[0]);
             if(!post.id){
-                console.log(post)
                 throw new Error("No posts found");
             }
             return post;
@@ -33,7 +32,6 @@ module.exports = class Post {
             const currentTitle = title || this.title
             const currentNickname = nickname || this.nickname
             const currentBody = body || this.body
-            console.log(currentTitle, currentNickname, currentBody)
             const update = await db.query(`UPDATE post
                                               SET title    = $1,
                                                   nickname = $2,

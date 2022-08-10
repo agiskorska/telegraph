@@ -23,7 +23,6 @@ const create = async (req, res) => {
 const update = async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
-        console.log(post)
         const update = await post.update(post.id, req.body.title, req.body.nickname, req.body.body);
         res.status(201).send({body: update, message: "updated"});
     } catch (e) {
@@ -34,7 +33,6 @@ const update = async (req, res) => {
 const destroy = async (req, res) => {
     try { 
         const destroy = await Post.destroy(req.params.id);
-        console.log(destroy)
         res.status(202).send({message: "entry deleted"})
     } catch (e) {
         res.status(404).send({message: "id not found"})
