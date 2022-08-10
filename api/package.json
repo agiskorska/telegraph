@@ -1,0 +1,18 @@
+{
+    "description": "telegraph",
+    "scripts": {
+      "start": "node index.js",
+      "dev": "nodemon -L index.js",
+      "seedDev": "node dbConfig/seedDev.js"
+    },
+    "author": "Daniel and Aggie",
+    "license": "ISC",
+    "devDependencies": {
+      "nodemon": "^2.0.4"
+    },
+    "dependencies": {
+      "cors": "^2.8.5",
+      "express": "^4.17.1",
+      "pg": "^8.3.3"
+    }
+  }
