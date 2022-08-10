@@ -1,0 +1,53 @@
+.hidden {
+    display: none;
+}
+
+.post {
+    width: 60%;
+    margin: auto;
+    margin-top: 3%;
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+    border: none;
+    resize: none;
+}
+
+.inputs input {
+    border: none;
+}
+
+input:active {
+    border: none;
+    outline: none;
+}
+
+.btn {
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.title {
+    font-size: 50px;
+}
+
+.nickname {
+    font-size: 25px;
+}
+
+.body {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}

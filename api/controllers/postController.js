@@ -14,7 +14,7 @@ const create = async (req, res) => {
     try {
         const body = req.body;
         const insert = await Post.createNew(body)
-        res.status(201).send({body: insert, message: "created"})
+        res.status(201).json({body: insert.id, message: "created"})
     } catch (e) {
         res.status(404).send({message: "id not found"})
     }
