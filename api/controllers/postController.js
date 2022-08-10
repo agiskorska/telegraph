@@ -1,17 +1,44 @@
-const show = (req, res) => {
-    res.status(200).send(req.params.id)
+const Post = require('../models/Post');
+
+const show = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const post = await Post.findById(id);
+        res.status(200).send(post);
+    } catch (e) {
+        res.status(404).send({message: "id not found"})
+    }
 }
 
-const create = (req, res) => {
-    res.status(201).send({body: req.body, message: "created"})
+const create = async (req, res) => {
+    try {
+        const body = req.body;
+        const insert = await Post.createNew(body)
+        res.status(201).send({body: insert, message: "created"})
+    } catch (e) {
+        res.status(404).send({message: "id not found"})
+    }
 }
 
-const update = (req, res) => {
-    res.status(201).send({body: req.body, message: "created"})
+const update = async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+        console.log(post)
+        const update = await post.update(post.id, req.body.title, req.body.nickname, req.body.body);
+        res.status(201).send({body: update, message: "updated"});
+    } catch (e) {
+        res.status(404).send({message: "id not found"})
+    }
 }
 
-const destroy = (req, res) => {
-    res.status(204).send({message: "entry deleted"})
+const destroy = async (req, res) => {
+    try { 
+        const destroy = await Post.destroy(req.params.id);
+        console.log(destroy)
+        res.status(202).send({message: "entry deleted"})
+    } catch (e) {
+        res.status(404).send({message: "id not found"})
+    }
 }
 
 module.exports = { show, create, update, destroy }
